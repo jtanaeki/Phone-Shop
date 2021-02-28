@@ -1,0 +1,76 @@
+<h4>
+  <a title="Home" [routerLink]="['/']">Home</a> > {{ product.name }}</h4>
+<br>
+
+<h2 style="text-decoration: underline; font-weight:bold">Product Details</h2>
+
+<div *ngIf="product">
+  <br>
+  <h3>{{ product.name }}</h3>
+
+  <mat-tab-group mat-stretch-tabs dynamicHeight>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>image</mat-icon>
+        Images
+      </ng-template>
+
+      <app-carousel [product]="product"></app-carousel>
+
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>list</mat-icon>
+        Details
+      </ng-template>
+
+      <div class="details-accordion">
+        <mat-accordion multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <b class="details-accordion-title">Price</b>
+              </mat-panel-title>
+              <mat-panel-description>
+                <mat-icon>attach_money</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <span class="details-accordion-content">
+              <h4>{{ product.price | currency }}</h4>
+            </span>
+
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <b class="details-accordion-title">Description</b>
+              </mat-panel-title>
+              <mat-panel-description>
+                <mat-icon>description</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <span class="details-accordion-content">
+              <p>{{ product.description }}</p>
+            </span>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+    </mat-tab>
+  </mat-tab-group>
+
+  <div class="details">
+    <div class="details-quantity">
+      <button (click)="downQty()" [disabled]="!qty">-</button>
+      <input type="text" class="details-quantity-input" [value]="qty">
+      <button (click)="upQty()">+</button>
+    </div>
+    <app-dialog-buy-comp [product]="product" [quantity]="qty"
+      class="details-quantity-button">
+    </app-dialog-buy-comp>
+  </div>
+</div>

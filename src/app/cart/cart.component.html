@@ -1,0 +1,67 @@
+<h4>
+  <a title="Home" [routerLink]="['/']">Home</a> > Summary</h4>
+<br>
+
+<app-progress-bar *ngIf="pb_active; else editProgBlock">
+</app-progress-bar>
+<ng-template #editProgBlock>
+  <app-progress-bar></app-progress-bar>
+</ng-template>
+
+<h2 class="order-summary" style="font-weight:bold">Order Summary</h2>
+<br>
+
+<div class="cart-update" style="margin-bottom: 5px">
+  <a style="margin-left: 490px" (click)="onUpdate()"
+    *ngIf="update; else editElseBlock">
+    Update
+  </a>
+  <ng-template #editElseBlock>
+    <a style="margin-left: 510px" (click)="update = !update">Edit</a>
+  </ng-template>
+</div>
+
+<div *ngFor="let item of items">
+  <app-cart-item [item]="item" [update]="update"
+    (remove)="onRemove(item)">
+  </app-cart-item>
+</div>
+
+<br>
+
+<div class="total-summary">
+  <div class="subtotal">
+    <span><p>Subtotal:</p></span>
+    <span><p>{{ subtotal | currency }}</p></span>
+  </div>
+
+  <div class="tax">
+    <span><p>Tax (7%):</p></span>
+    <span><p>{{ tax | currency }}</p></span>
+  </div>
+
+  <div class="shipping">
+    <span><p>Shipping Method:</p></span>
+    <span>
+      <pre><p *ngIf="method.type; else methodElseBlock"><a routerLink="/shipping">[Edit]</a>  {{ method.type }} - {{ method.price | currency }}</p></pre>
+      <ng-template #methodElseBlock>
+        <p><a routerLink="/shipping">Choose Shipping Price</a></p>
+      </ng-template>
+    </span>
+  </div>
+
+  <b>
+    <pre>______________________________________________________________</pre>
+    <div class="total">
+      <span>TOTAL:</span>
+      <span>{{ total | currency }}</span>
+    </div>
+  </b>
+</div>
+
+<br><br>
+
+<form (ngSubmit)="onSubmit(nameFormGroup.value, addressFormGroup.value, emailFormGroup.value)"
+  style="margin-bottom: 100px">
+  <app-stepper></app-stepper>
+</form>

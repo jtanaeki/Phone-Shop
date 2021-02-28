@@ -1,0 +1,84 @@
+<div class="confirmation">
+  <h4><a href="#contact" style="text-decoration: underline">Contact Us</a></h4>
+  <h1 style="text-align: center;"><b>Thank You For Your Order, <i>{{ name }}</i> !</b></h1>
+  <p style="text-align: center;">We're processing your order now.<p>
+  <span style="float: right;">
+    <a><i class="material-icons" style="vertical-align: sub;">print</i> Print</a>
+  </span>
+  <br><br>
+  <hr>
+  <div class="confirmDetail">
+    <span><b>Confirmation will be sent to: </b></span><span><i>{{ email }}</i></span>
+  </div>
+  <br><br>
+  <div class="confirmDetail">
+    <span><b>Order number: </b></span><span>#<i id="randNum">{{ randNum }}</i></span>
+  </div>
+  <br><br>
+  <div class="confirmDetail">
+    <span><b>Order date: </b></span><span><i>{{ date }}</i></span>
+  </div>
+  <br><br>
+  <div class="confirmDetail">
+      <span><b>Delivery method: </b></span>
+      <span><i>{{ method.type }}</i></span>
+  </div>
+  <span style="float: right;">
+    <i><b><span style="padding-right: 62px;">Expected Date: </span>{{ laterDate }}</b></i>
+  </span>
+  <br><br><br>
+  <div class="confirmDetail">
+    <span><b>Summary: </b></span>
+    <span>
+      <i>
+        <div class="conf_cart-item" *ngFor="let item of items">
+          <span>{{ item.name }}</span>
+          <span>
+            {{ item.price | currency }}
+            <span *ngIf="item.name == 'Phone XL'">({{ xl }})</span>
+            <span *ngIf="item.name == 'Phone Mini'">({{ mini }})</span>
+            <span *ngIf="item.name == 'Phone Standard'">({{ standard }})</span>
+          </span>
+        </div>
+        <div class="conf_total-summary">
+          <div class="conf_subtotal">
+            <span><p>Subtotal:</p></span>
+            <span><p>{{ subtotal | currency }}</p></span>
+          </div>
+          <div class="conf_tax">
+            <span><p>Tax (7%):</p></span>
+            <span><p>{{ tax | currency }}</p></span>
+          </div>
+          <div class="conf_shipping">
+            <span><p>Shipping Method:</p></span>
+            <span>
+              <pre><p>{{ method.type }} - {{ method.price | currency }}</p></pre>
+            </span>
+          </div>
+          <b>
+            <pre>________________________________________</pre>
+            <div class="conf_total">
+              <span>TOTAL:</span>
+              <span>{{ total | currency }}</span>
+            </div>
+          </b>
+        </div>
+      </i>
+    </span>
+  </div>
+  <br><br>
+  <hr>
+  <h2 id="contact"><b>Contact Us</b></h2>
+  <p>
+    Please, feel free to <a href="#">contact us</a> about anything in
+    regards to your order.
+  </p>
+  <br><br>
+  <hr>
+  <h2><b>Create a PHONESHOP<span>&trade;</span> profile</b></h2>
+  <p>
+    Create a profile and expedite the process for ordering your items
+    next time. You're also eligible for great rewards and offers.
+  </p>
+  <button style="margin-bottom: 100px;">Create Profile</button>
+</div>

@@ -1,0 +1,70 @@
+<div class="cart-item" *ngIf="update; else editElseBlock">
+  <span style="margin-right: auto">
+    <span class="cart-item-name">{{ item.name }}</span>
+  </span>
+  <span class="cart-item-price">
+    {{ item.price | currency }}
+    <span *ngIf="item.name == 'Phone XL'">({{ cart.xlCount }})</span>
+    <span *ngIf="item.name == 'Phone Mini'">({{ cart.miniCount }})</span>
+    <span *ngIf="item.name == 'Phone Standard'">({{ cart.standardCount }})</span>
+  </span>
+  <span>
+    <input *ngIf="item.name == 'Phone XL'" type="text"
+      class="cart-item-input" [(ngModel)]="cart.xlCount">
+    <input *ngIf="item.name == 'Phone Mini'" type="text"
+      class="cart-item-input" [(ngModel)]="cart.miniCount">
+    <input *ngIf="item.name == 'Phone Standard'" type="text"
+      class="cart-item-input" [(ngModel)]="cart.standardCount">
+  </span>
+  <span>
+    <div class="cart-item-button" *ngIf="item.name == 'Phone XL'">
+      <span class="cart-item-button-up">
+        <button (click)="upQty(item)">⮙</button>
+      </span>
+      <span class="cart-item-button-down">
+        <button (click)="downQty(item)" [disabled]="!cart.xlCount">⮛</button>
+      </span>
+    </div>
+    <div class="cart-item-button" *ngIf="item.name == 'Phone Mini'">
+      <span class="cart-item-button-up">
+        <button (click)="upQty(item)">⮙</button>
+      </span>
+      <span class="cart-item-button-down">
+        <button (click)="downQty(item)" [disabled]="!cart.miniCount">⮛</button>
+      </span>
+    </div>
+    <div class="cart-item-button" *ngIf="item.name == 'Phone Standard'">
+      <span class="cart-item-button-up">
+        <button (click)="upQty(item)">⮙</button>
+      </span>
+      <span class="cart-item-button-down">
+        <button (click)="downQty(item)" [disabled]="!cart.standardCount">⮛</button>
+      </span>
+    </div>
+  </span>
+  <span>
+    <a>
+      <img (click)="remove.emit()" class="cart-item-remove"
+        src="assets/img/waste-bin.svg" alt="Waste Bin" />
+    </a>
+  </span>
+</div>
+<ng-template #editElseBlock>
+  <div class="cart-item">
+    <span style="margin-right: auto">
+      <span class="cart-item-name">{{ item.name }}</span>
+    </span>
+      <span class="cart-item-price">
+        {{ item.price | currency }}
+        <span *ngIf="item.name == 'Phone XL'">({{ cart.xlCount }})</span>
+        <span *ngIf="item.name == 'Phone Mini'">({{ cart.miniCount }})</span>
+        <span *ngIf="item.name == 'Phone Standard'">({{ cart.standardCount }})</span>
+      </span>
+      <span>
+        <a>
+          <img (click)="remove.emit()" class="cart-item-remove"
+            src="assets/img/waste-bin.svg" alt="Waste Bin" />
+        </a>
+      </span>
+  </div>
+</ng-template>

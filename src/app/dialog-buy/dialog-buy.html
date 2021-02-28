@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Confirm Buy</h1>
+<div mat-dialog-content>
+  <p>Are you sure you want to <b>buy</b><i> ({{ data.quantity }}) '{{ data.product.name }}'</i> ?</p><br>
+</div>
+<div mat-dialog-actions>
+  <button mat-dialog-close>No Thanks</button>
+  <button (click)="onBuyConfirm()" mat-dialog-close cdkFocusInitial>Yes, Please</button>
+</div>

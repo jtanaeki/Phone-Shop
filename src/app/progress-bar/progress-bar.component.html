@@ -1,0 +1,79 @@
+<div class="progressBar" id="progressBar">
+  <mat-card>
+    <mat-progress-bar mode="determinate" [value]="pb.progressBarValue"></mat-progress-bar>
+    <div class="progressTracker">
+      <div><!-- Shipping --></div>
+      <div><!-- Name --></div>
+      <div><!-- Address --></div>
+      <div><!-- Email --></div>
+      <div><!-- Complete! --></div>
+    </div>
+  </mat-card>
+  <div class="progressTrackerColor" [ngSwitch]="pb.progressBarValue">
+    <app-progress-bar-canvas *ngSwitchCase="20"
+      [sbc]="pb.shipBGColor"
+      [stc]="pb.shipTextColor"
+      [nbc]="pb.nameBGColor"
+      [ntc]="pb.nameTextColor"
+      [abc]="pb.addrBGColor"
+      [atc]="pb.addrTextColor"
+      [ebc]="pb.emailBGColor"
+      [etc]="pb.emailTextColor"
+      [cbc]="pb.compBGColor"
+      [ctc]="pb.compTextColor"
+    >
+    </app-progress-bar-canvas>
+    <app-progress-bar-canvas *ngSwitchCase="40"
+      [sbc]="pb.shipBGColor"
+      [stc]="pb.shipTextColor"
+      [nbc]="pb.nameBGColor"
+      [ntc]="pb.nameTextColor"
+      [abc]="pb.addrBGColor"
+      [atc]="pb.addrTextColor"
+      [ebc]="pb.emailBGColor"
+      [etc]="pb.emailTextColor"
+      [cbc]="pb.compBGColor"
+      [ctc]="pb.compTextColor"
+    >
+    </app-progress-bar-canvas>
+    <app-progress-bar-canvas *ngSwitchCase="60"
+      [sbc]="pb.shipBGColor"
+      [stc]="pb.shipTextColor"
+      [nbc]="pb.nameBGColor"
+      [ntc]="pb.nameTextColor"
+      [abc]="pb.addrBGColor"
+      [atc]="pb.addrTextColor"
+      [ebc]="pb.emailBGColor"
+      [etc]="pb.emailTextColor"
+      [cbc]="pb.compBGColor"
+      [ctc]="pb.compTextColor"
+    >
+    </app-progress-bar-canvas>
+    <app-progress-bar-canvas *ngSwitchCase="80"
+      [sbc]="pb.shipBGColor"
+      [stc]="pb.shipTextColor"
+      [nbc]="pb.nameBGColor"
+      [ntc]="pb.nameTextColor"
+      [abc]="pb.addrBGColor"
+      [atc]="pb.addrTextColor"
+      [ebc]="pb.emailBGColor"
+      [etc]="pb.emailTextColor"
+      [cbc]="pb.compBGColor"
+      [ctc]="pb.compTextColor"
+    >
+    </app-progress-bar-canvas>
+    <app-progress-bar-canvas *ngSwitchCase="100"
+      [sbc]="pb.shipBGColor"
+      [stc]="pb.shipTextColor"
+      [nbc]="pb.nameBGColor"
+      [ntc]="pb.nameTextColor"
+      [abc]="pb.addrBGColor"
+      [atc]="pb.addrTextColor"
+      [ebc]="pb.emailBGColor"
+      [etc]="pb.emailTextColor"
+      [cbc]="pb.compBGColor"
+      [ctc]="pb.compTextColor"
+    >
+    </app-progress-bar-canvas>
+  </div>
+</div>

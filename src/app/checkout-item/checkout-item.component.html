@@ -1,0 +1,48 @@
+<div class="checkout-item">
+  <span style="margin-right: auto">
+    <span class="checkout-item-name">{{ item.name }}</span>
+  </span>
+  <span class="checkout-item-price">
+    {{ item.price | currency }}
+  </span>
+  <span>
+    <input *ngIf="item.name == 'Phone XL'" type="text"
+      class="checkout-item-input" [(ngModel)]="checkout.xlCount" (change)="update.emit()">
+    <input *ngIf="item.name == 'Phone Mini'" type="text"
+      class="checkout-item-input" [(ngModel)]="checkout.miniCount" (change)="update.emit()">
+    <input *ngIf="item.name == 'Phone Standard'" type="text"
+      class="checkout-item-input" [(ngModel)]="checkout.standardCount" (change)="update.emit()">
+  </span>
+  <span>
+    <div class="checkout-item-button" *ngIf="item.name == 'Phone XL'">
+      <span class="checkout-item-button-up">
+        <button (click)="upQty(item); update.emit()">⮙</button>
+      </span>
+      <span class="checkout-item-button-down">
+        <button (click)="downQty(item); update.emit()" [disabled]="!checkout.xlCount">⮛</button>
+      </span>
+    </div>
+    <div class="checkout-item-button" *ngIf="item.name == 'Phone Mini'">
+      <span class="checkout-item-button-up">
+        <button (click)="upQty(item); update.emit()">⮙</button>
+      </span>
+      <span class="checkout-item-button-down">
+        <button (click)="downQty(item); update.emit()" [disabled]="!checkout.miniCount">⮛</button>
+      </span>
+    </div>
+    <div class="checkout-item-button" *ngIf="item.name == 'Phone Standard'">
+      <span class="checkout-item-button-up">
+        <button (click)="upQty(item); update.emit()">⮙</button>
+      </span>
+      <span class="checkout-item-button-down">
+        <button (click)="downQty(item); update.emit()" [disabled]="!checkout.standardCount">⮛</button>
+      </span>
+    </div>
+  </span>
+  <span>
+    <a>
+      <img (click)="remove.emit()" class="checkout-item-remove"
+        src="assets/img/waste-bin-color.svg" alt="Waste Bin" />
+    </a>
+  </span>
+</div>

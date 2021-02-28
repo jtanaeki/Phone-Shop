@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Confirm Share</h1>
+<div mat-dialog-content>
+  <p>Are you sure you want to <b>share</b><i> '{{ data.product.name }}'</i> ?</p><br>
+</div>
+<div mat-dialog-actions>
+  <button mat-dialog-close>No Thanks</button>
+  <button (click)="onShareConfirm()" mat-dialog-close cdkFocusInitial>Yes, Please</button>
+</div>

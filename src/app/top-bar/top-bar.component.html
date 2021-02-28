@@ -1,0 +1,49 @@
+<a [routerLink]="['/']">
+  <img class="logo" src="assets/img/PhoneShop-logo.png" alt="PhoneShop Logo" />
+</a>
+
+<div class="checkout">
+  <div class="checkout-button">
+    <a [routerLink]="['/cart']" class="button fancy-button">
+      <i class="material-icons">shopping_cart</i>
+      Checkout ({{ checkoutCount.cartCount }})
+    </a>
+    <a id="dropdown" class="button fancy-button dropdown">&#10177;</a>
+  </div>
+  <div class="checkoutDropdown">
+    <div class="checkoutDropdownList">
+      <div *ngFor="let item of checkoutCart.items">
+        <app-checkout-item [item]="item" (remove)="onRemove(item)"
+          (update)="update = true">
+        </app-checkout-item>
+      </div>
+      <div class="checkout-update" *ngIf="update">
+        <a (click)="onUpdate()">Update</a>
+      </div>
+      <div class="checkout-message" *ngIf="message">
+        <span class="checkout-message-updated" *ngIf="message == 'updated'">
+          Updated!
+        </span>
+        <span class="checkout-message-removed" *ngIf="message == 'removed'">
+          '{{ item }}' removed
+        </span>
+      </div>
+      <div class="checkout-subtotal">
+        <span style="margin-right: auto">
+          <span class="checkout-subtotal-name">SUBTOTAL:</span>
+        </span>
+        <span style="margin-right: 115px">
+          <span class="checkout-subtotal-price">
+            {{ total.subtotal | currency }}
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

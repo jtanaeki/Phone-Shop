@@ -1,0 +1,99 @@
+<h4>Home</h4>
+<br>
+
+<h2 style="text-decoration: underline; font-weight:bold">Products</h2>
+<br>
+
+<form class="product-form">
+  <mat-form-field>
+    <input type="text" placeholder="Search" aria-label="Product" matInput
+      [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete (opened)="addSpaceUnderSearch()" (closed)="removeSpaceUnderSearch()"
+      #auto="matAutocomplete" (optionSelected)="getProduct($event.option.value)">
+      <mat-option *ngFor="let product of filteredProducts | async" [value]="product">
+        {{product}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<div *ngIf="!prod">
+  <div *ngFor="let product of products; index as productId">
+    <br>
+      <h3>
+        <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+          {{ product.name }}
+        </a>
+      </h3>
+
+      <p *ngIf="product.description">
+        Description: {{ product.description }}
+      </p>
+
+      <app-dialog-share-comp [product]="product"></app-dialog-share-comp>
+      <app-dialog-notify-comp [product]="product"></app-dialog-notify-comp>
+  </div>
+</div>
+
+<div *ngIf="prod == 'Phone XL'">
+  <div *ngFor="let product of products; index as productId">
+    <div *ngIf="product.name == 'Phone XL'">
+      <h3>
+        <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+          {{ product.name }}
+        </a>
+      </h3>
+
+      <p *ngIf="product.description">
+        Description: {{ product.description }}
+      </p>
+
+      <app-dialog-share-comp [product]="product"></app-dialog-share-comp>
+      <app-dialog-notify-comp [product]="product"></app-dialog-notify-comp>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="prod == 'Phone Mini'">
+  <div *ngFor="let product of products; index as productId">
+    <div *ngIf="product.name == 'Phone Mini'">
+      <h3>
+        <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+          {{ product.name }}
+        </a>
+      </h3>
+
+      <p *ngIf="product.description">
+        Description: {{ product.description }}
+      </p>
+
+      <app-dialog-share-comp [product]="product"></app-dialog-share-comp>
+      <app-dialog-notify-comp [product]="product"></app-dialog-notify-comp>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="prod == 'Phone Standard'">
+  <div *ngFor="let product of products; index as productId">
+    <div *ngIf="product.name == 'Phone Standard'">
+      <h3>
+        <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+          {{ product.name }}
+        </a>
+      </h3>
+
+      <p *ngIf="product.description">
+        Description: {{ product.description }}
+      </p>
+
+      <app-dialog-share-comp [product]="product"></app-dialog-share-comp>
+      <app-dialog-notify-comp [product]="product"></app-dialog-notify-comp>
+    </div>
+  </div>
+</div>
+
+<!--
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
